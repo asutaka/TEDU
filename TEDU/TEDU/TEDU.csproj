@@ -139,6 +139,7 @@
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layouts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,7 +150,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="assets\admin\data\" />
+    <Folder Include="assets\admin\dist\" />
+    <Folder Include="assets\admin\js\" />
+    <Folder Include="assets\admin\less\" />
+    <Folder Include="assets\admin\vendor\" />
+    <Folder Include="assets\client\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
