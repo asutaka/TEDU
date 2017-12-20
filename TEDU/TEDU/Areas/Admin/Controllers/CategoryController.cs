@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,13 +36,17 @@ namespace TEDU.Areas.Admin.Controllers
         //
         // POST: /Admin/Category/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Category collection)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    // TODO: Add insert logic here
+                    //insert here
+                    return RedirectToAction("Index");
+                }
+                return View(collection);
             }
             catch
             {
