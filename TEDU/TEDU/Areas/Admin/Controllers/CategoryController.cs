@@ -10,12 +10,16 @@ namespace TEDU.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
+        CategoryModel cate;
+        public CategoryController()
+        {
+            cate = new CategoryModel();
+        }
         //
         // GET: /Admin/Category/
         public ActionResult Index()
         {
-            var iplCate = new CategoryModel();
-            var model = iplCate.ListAll();
+            var model = cate.ListAll();
             return View(model);
         }
 
@@ -28,6 +32,7 @@ namespace TEDU.Areas.Admin.Controllers
 
         //
         // GET: /Admin/Category/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -36,6 +41,7 @@ namespace TEDU.Areas.Admin.Controllers
         //
         // POST: /Admin/Category/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Category collection)
         {
             try
@@ -44,7 +50,15 @@ namespace TEDU.Areas.Admin.Controllers
                 {
                     // TODO: Add insert logic here
                     //insert here
-                    return RedirectToAction("Index");
+                    int res = cate.Create(collection);
+                    if (res > 0)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("","Thêm mới không thành công");
+                    }
                 }
                 return View(collection);
             }
